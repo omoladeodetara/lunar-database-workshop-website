@@ -18,7 +18,7 @@ export default function OptimizedImageExample() {
         <div>
           <h2 className="text-xl font-bold mb-4">Responsive Image</h2>
           <Image
-            src="/images/workshop-collaboration.jpg"
+            src="/images/lunar-mission.jpg"
             alt="Workshop Collaboration"
             width={600}
             height={400}

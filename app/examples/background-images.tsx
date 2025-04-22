@@ -26,7 +26,7 @@ export default function BackgroundImagesExample() {
         <div
           className="rounded-lg overflow-hidden relative h-64 flex items-end"
           style={{
-            backgroundImage: "url('/images/workshop-collaboration.jpg')",
+            backgroundImage: "url('/images/lunar-mission.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

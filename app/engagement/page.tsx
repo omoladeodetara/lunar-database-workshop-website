@@ -12,6 +12,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { toast } from "@/hooks/use-toast"
 import { trackEvent } from "@/lib/analytics"
 
+// Map of user initials to profile images for demonstration
+const userAvatars = {
+  MC: "/images/speaker-quan.jpg",
+  SJ: "/images/speaker-aarti.jpg",
+  DK: "/images/speaker-fred.jpg",
+  YO: "/images/speaker-hiroshi.jpg",
+}
+
 export default function EngagementPage() {
   const [question, setQuestion] = useState("")
   const [questions, setQuestions] = useState([
@@ -172,7 +180,10 @@ export default function EngagementPage() {
                 <CardContent className="pt-6">
                   <div className="flex gap-4">
                     <Avatar>
-                      <AvatarImage src={`/avatars/${q.id}.jpg`} alt={q.user} />
+                      <AvatarImage
+                        src={userAvatars[q.avatar as keyof typeof userAvatars] || "/placeholder.png"}
+                        alt={q.user}
+                      />
                       <AvatarFallback>{q.avatar}</AvatarFallback>
                     </Avatar>
                     <div className="flex-1">

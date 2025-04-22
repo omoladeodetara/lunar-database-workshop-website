@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Linkedin, Twitter, Globe } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 
 // This would typically come from a database or API
 const getCommitteeMemberData = (id: string) => {
@@ -22,7 +23,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/organizer-1.jpg",
+      image: "/images/organizer-timothy.jpg",
       expertise: [
         "Space exploration architecture",
         "Human spaceflight systems",
@@ -33,6 +34,7 @@ const getCommitteeMemberData = (id: string) => {
         linkedin: "https://www.linkedin.com/in/timothy-cichan-4224b72a/",
         website: "https://www.lockheedmartin.com/space",
       },
+      isModerator: true,
     },
     {
       id: 2,
@@ -49,7 +51,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/organizer-2.jpg",
+      image: "/images/organizer-wesley.jpg",
       expertise: ["Quantum materials physics", "Materials characterization", "Analytical methods", "Data analysis"],
       social: {
         linkedin: "https://www.linkedin.com/in/wesley-fuhrman-6b0a1550/",
@@ -71,7 +73,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/organizer-3.jpg",
+      image: "/images/organizer-anna.jpg", // Update from "/images/organizer-anna.png" to "/images/organizer-anna.jpg"
       expertise: [
         "Systems engineering",
         "Technical standards development",
@@ -109,6 +111,7 @@ const getCommitteeMemberData = (id: string) => {
         linkedin: "https://www.linkedin.com/in/marchel-holle/",
         website: "https://ispace-inc.com/",
       },
+      isModerator: true,
     },
     {
       id: 5,
@@ -152,7 +155,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/speaker-fred.jpg",
+      image: "/images/organizer-bernd.jpg",
       expertise: ["Investment strategy", "Space venture financing", "Financial advisory", "Economic analysis"],
       social: {
         linkedin: "https://www.linkedin.com/in/dr-bernd-j-hoefer-36b24b24a/",
@@ -174,7 +177,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/speaker-quan.jpg",
+      image: "/images/organizer-ekaterina.jpg", // Updated from "/images/speaker-quan.jpg"
       expertise: [
         "International space policy",
         "Space diplomacy",
@@ -185,8 +188,9 @@ const getCommitteeMemberData = (id: string) => {
         linkedin: "https://www.linkedin.com/in/ekaterina-seltikova/",
         website: "https://moonvillageassociation.org/gegsla/gegsla-team/",
       },
+      isModerator: true,
     },
-        {
+    {
       id: 8,
       name: "Omolade Odetara",
       title: "Communications Lead",
@@ -201,7 +205,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/speaker-aarti.jpg",
+      image: "/images/organizer-omolade.jpg",
       expertise: [
         "API ecosystems",
         "Space industry platform development",
@@ -226,9 +230,11 @@ const getCommitteeMemberData = (id: string) => {
 
         Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia.
 
+        Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lac  leo. Maecenas lacinia.
+
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/organizer-1.jpg",
+      image: "/images/organizer-hasan.jpg",
       expertise: [
         "Geospatial databases",
         "Lunar mapping standards",
@@ -255,7 +261,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/organizer-2.jpg",
+      image: "/images/organizer-daniel.jpg",
       expertise: ["Systems engineering", "Mission architecture", "Technical integration", "Requirements analysis"],
       social: {
         linkedin: "https://www.linkedin.com/in/daniel-meidenbauer-00952b49/",
@@ -277,7 +283,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/organizer-3.jpg",
+      image: "/images/organizer-jamie.jpg", // Updated from "/images/organizer-3.jpg"
       expertise: [
         "Technical event coordination",
         "Virtual collaboration platforms",
@@ -304,7 +310,7 @@ const getCommitteeMemberData = (id: string) => {
 
         Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Mauris sollicitudin fermentum libero.
       `,
-      image: "/images/speaker-krystal.jpg",
+      image: "/images/organizer-kristin.jpg",
       expertise: [
         "Technical facilitation",
         "Consensus-building",
@@ -315,6 +321,7 @@ const getCommitteeMemberData = (id: string) => {
         linkedin: "https://www.linkedin.com/in/kristinljaburek/",
         website: "https://www.jhuapl.edu/",
       },
+      isModerator: true,
     },
   ]
 
@@ -343,6 +350,11 @@ export default function CommitteeMemberDetailPage({ params }: { params: { id: st
                 fill
                 className="object-cover"
               />
+              {committeeMember.isModerator && (
+                <div className="absolute top-4 right-4">
+                  <Badge className="bg-primary">Moderator</Badge>
+                </div>
+              )}
             </div>
 
             <h1 className="text-3xl font-bold mb-2">{committeeMember.name}</h1>
@@ -386,6 +398,17 @@ export default function CommitteeMemberDetailPage({ params }: { params: { id: st
                 ))}
               </ul>
             </div>
+            {committeeMember.isModerator && (
+              <div className="mt-8">
+                <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg">
+                  <h3 className="font-medium mb-2">Workshop Moderator</h3>
+                  <p className="text-sm text-muted-foreground">
+                    As a workshop moderator, {committeeMember.name} will facilitate discussions and help guide the
+                    collaborative process.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

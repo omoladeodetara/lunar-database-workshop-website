@@ -15,6 +15,7 @@ import { toast } from "@/hooks/use-toast"
 import { CheckCircle2 } from "lucide-react"
 import { trackEvent } from "@/lib/analytics"
 import { useEffect } from "react"
+// We'll use console logging for performance tracking in development
 
 const sessionPreferences = [
   {
@@ -109,7 +110,11 @@ export default function RegistrationPage() {
     }
   }, [watchSessionPreferences])
 
+  // Update the onSubmit function to track performance
   function onSubmit(values: z.infer<typeof formSchema>) {
+    // Start timing
+    const startTime = performance.now()
+
     // In a real application, you would submit this data to your backend
     console.log(values)
 
@@ -121,6 +126,12 @@ export default function RegistrationPage() {
       session_count: values.sessionPreferences?.length || 0,
       has_special_requirements: values.specialRequirements ? "yes" : "no",
     })
+
+    // Log performance data to console in development
+    const duration = performance.now() - startTime
+    if (process.env.NODE_ENV === "development") {
+      console.log(`[Performance] Registration Submission: ${duration}ms (success: true)`)
+    }
 
     // Show success message
     setIsSubmitted(true)

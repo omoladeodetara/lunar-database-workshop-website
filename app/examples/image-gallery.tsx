@@ -16,9 +16,9 @@ export default function ImageGalleryExample() {
       caption: "Lunar surface exploration site",
     },
     {
-      src: "/images/workshop-collaboration.jpg",
-      alt: "Workshop Collaboration",
-      caption: "Collaborative workshop session",
+      src: "/images/lunar-mission.jpg",
+      alt: "Lunar Mission",
+      caption: "Lunar mission planning and execution",
     },
     {
       src: "/images/speaker-quan.jpg",
@@ -36,9 +36,9 @@ export default function ImageGalleryExample() {
       caption: "Dr. Hiroshi Yamakawa at previous workshop",
     },
     {
-      src: "/images/speaker-fred.jpg",
-      alt: "Fred Slane",
-      caption: "Fred Slane discussing standards",
+      src: "/images/lunar-outpost-construction.png",
+      alt: "Lunar Outpost Construction",
+      caption: "Construction of lunar outpost facilities",
     },
   ]
 
@@ -54,7 +54,7 @@ export default function ImageGalleryExample() {
             onClick={() => setSelectedImage(image.src)}
           >
             <div className="relative h-64">
-              <Image src={image.src || "/placeholder.svg"} alt={image.alt} fill className="object-cover" />
+              <Image src={image.src || "/placeholder.png"} alt={image.alt} fill className="object-cover" />
             </div>
             <div className="p-3 bg-black/60 absolute bottom-0 w-full">
               <p className="text-white text-sm">{image.caption}</p>
@@ -73,7 +73,7 @@ export default function ImageGalleryExample() {
           </button>
           {selectedImage && (
             <div className="relative h-[80vh]">
-              <Image src={selectedImage || "/placeholder.svg"} alt="Gallery image" fill className="object-contain" />
+              <Image src={selectedImage || "/placeholder.png"} alt="Gallery image" fill className="object-contain" />
             </div>
           )}
         </DialogContent>

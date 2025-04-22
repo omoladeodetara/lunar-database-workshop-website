@@ -65,7 +65,7 @@ export default function DetailedAgendaPage() {
   const panelSpeakers = [
     {
       id: 1,
-      name: "Dr. Quan Haofang",
+      name: "Quan Haofang",
       role: "China Astronautics Standards Institute",
       avatar: "QH",
       image: "/images/speaker-quan.jpg",
@@ -86,18 +86,17 @@ export default function DetailedAgendaPage() {
     },
     {
       id: 4,
-      name: "Dr. Hiroshi Yamakawa",
+      name: "Hiroshi Yamakawa",
       role: "ispace, Inc.",
       avatar: "HY",
       image: "/images/speaker-hiroshi.jpg",
     },
     {
       id: 5,
-      name: "Dr. Elizabeth Chen",
+      name: "Elizabeth Chen",
       role: "International Space University",
       avatar: "EC",
-      image: "/images/organizer-1.jpg",
-      isModerator: true,
+      image: "/images/speaker-chen.jpg",
     },
   ]
 
@@ -138,7 +137,7 @@ export default function DetailedAgendaPage() {
       type: "qa",
       time: "15:53 - 16:08",
       duration: "15 minutes",
-      description: "Audience questions for the panel, moderated by Dr. Elizabeth Chen.",
+      description: "Audience questions for the panel.",
       track: "Main Track",
     },
     {
@@ -178,11 +177,37 @@ export default function DetailedAgendaPage() {
         "Collaborative work in breakout rooms using Miro boards (40 minutes of brainstorming + 10 minutes of summarizing insights).",
       track: "Breakout Rooms",
       details: [
-        "Lunar Database Standardization",
-        "Technical Interoperability Solutions",
-        "International Cooperation Frameworks",
+        "Lunar Database Standardization (Moderator: Timothy Cichan)",
+        "Technical Interoperability Solutions (Moderator: Marchel Holle)",
+        "International Cooperation Frameworks (Moderator: Kristin Jaburek)",
         "Implementation Strategies",
         "Future Challenges and Opportunities",
+      ],
+      speakers: [
+        {
+          id: 1,
+          name: "Timothy Cichan",
+          role: "Lockheed Martin",
+          avatar: "TC",
+          image: "/images/organizer-timothy.jpg",
+          isModerator: true,
+        },
+        {
+          id: 4,
+          name: "Marchel Holle",
+          role: "ispace",
+          avatar: "MH",
+          image: "/images/speaker-hiroshi.jpg",
+          isModerator: true,
+        },
+        {
+          id: 12,
+          name: "Kristin Jaburek",
+          role: "Johns Hopkins Applied Physics Laboratory",
+          avatar: "KJ",
+          image: "/images/organizer-kristin.jpg",
+          isModerator: true,
+        },
       ],
     },
     {
@@ -350,14 +375,16 @@ export default function DetailedAgendaPage() {
 
                     {session.speakers && session.speakers.length > 0 && (
                       <div className="space-y-3">
-                        <h4 className="text-sm font-medium">Panelists:</h4>
+                        <h4 className="text-sm font-medium">
+                          {session.type === "breakout" ? "Breakout Room Moderators:" : "Panelists:"}
+                        </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                           {session.speakers.map((speaker) => (
                             <TooltipProvider key={speaker.id}>
                               <Tooltip>
                                 <TooltipTrigger asChild>
                                   <Link
-                                    href={`/speakers/${speaker.id}`}
+                                    href={`/committee/${speaker.id}`}
                                     className="flex items-center gap-2 p-2 rounded-md hover:bg-muted transition-colors"
                                     onClick={() => handleSpeakerClick(speaker.id, speaker.name)}
                                   >

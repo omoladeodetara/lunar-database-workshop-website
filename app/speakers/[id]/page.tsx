@@ -14,18 +14,18 @@ const getSpeakerData = (id: string) => {
   const speakers = [
     {
       id: 1,
-      name: "Dr. Quan Haofang",
+      name: "Quan Haofang",
       title: "Senior Standards Expert",
       organization: "China Astronautics Standards Institute",
-      bio: "Dr. Quan Haofang is a leading expert in space standardization with over 20 years of experience developing technical standards for space missions. His work focuses on interoperability standards for lunar missions and international collaboration frameworks for space exploration.",
+      bio: "Quan Haofang is a leading expert in space standardization with over 20 years of experience developing technical standards for space missions. His work focuses on interoperability standards for lunar missions and international collaboration frameworks for space exploration.",
       fullBio: `
-        Dr. Quan Haofang has dedicated his career to advancing space standardization efforts, particularly in the context of lunar exploration. At the China Astronautics Standards Institute, he leads initiatives to develop technical standards that facilitate international collaboration in space activities.
+        Quan Haofang has dedicated his career to advancing space standardization efforts, particularly in the context of lunar exploration. At the China Astronautics Standards Institute, he leads initiatives to develop technical standards that facilitate international collaboration in space activities.
 
-        With a Ph.D. in Aerospace Engineering from Beihang University, Dr. Quan has contributed to numerous international standardization committees and working groups. His research has been instrumental in establishing protocols for lunar data exchange, communication systems interoperability, and resource utilization standards.
+        With a Ph.D. in Aerospace Engineering from Beihang University, Quan has contributed to numerous international standardization committees and working groups. His research has been instrumental in establishing protocols for lunar data exchange, communication systems interoperability, and resource utilization standards.
 
-        Dr. Quan has published over 40 papers on space standardization and has been a key contributor to China's lunar exploration program. His work bridges technical expertise with international policy considerations, making him a valuable voice in discussions about the future of lunar activities.
+        Quan has published over 40 papers on space standardization and has been a key contributor to China's lunar exploration program. His work bridges technical expertise with international policy considerations, making him a valuable voice in discussions about the future of lunar activities.
 
-        Prior to joining the China Astronautics Standards Institute, Dr. Quan worked on the Chang'e lunar exploration program, where he helped develop systems for lunar surface operations and data collection.
+        Prior to joining the China Astronautics Standards Institute, Quan worked on the Chang'e lunar exploration program, where he helped develop systems for lunar surface operations and data collection.
       `,
       image: "/images/speaker-quan.jpg",
       sessions: [
@@ -106,18 +106,18 @@ const getSpeakerData = (id: string) => {
     },
     {
       id: 4,
-      name: "Dr. Hiroshi Yamakawa",
+      name: "Hiroshi Yamakawa",
       title: "Chief Technology Officer",
       organization: "ispace, Inc.",
-      bio: "Dr. Hiroshi Yamakawa serves as the CTO of ispace, a leading lunar exploration company. With a background in aerospace engineering and lunar mission planning, he oversees the technical development of ispace's lunar landers and rovers. His expertise in lunar surface operations and resource utilization contributes significantly to international standards for lunar activities.",
+      bio: "Hiroshi Yamakawa serves as the CTO of ispace, a leading lunar exploration company. With a background in aerospace engineering and lunar mission planning, he oversees the technical development of ispace's lunar landers and rovers. His expertise in lunar surface operations and resource utilization contributes significantly to international standards for lunar activities.",
       fullBio: `
-        Dr. Hiroshi Yamakawa is the Chief Technology Officer at ispace, Inc., a private lunar exploration company developing technologies for lunar resource utilization. In this role, he leads the technical development of ispace's lunar landers and rovers, drawing on his extensive background in aerospace engineering and lunar mission planning.
+        Hiroshi Yamakawa is the Chief Technology Officer at ispace, Inc., a private lunar exploration company developing technologies for lunar resource utilization. In this role, he leads the technical development of ispace's lunar landers and rovers, drawing on his extensive background in aerospace engineering and lunar mission planning.
 
-        With over 20 years of experience in the space industry, Dr. Yamakawa has been at the forefront of Japan's lunar exploration efforts. Before joining ispace, he held senior positions at JAXA (Japan Aerospace Exploration Agency), where he contributed to the development of lunar mission architectures and technologies.
+        With over 20 years of experience in the space industry, Yamakawa has been at the forefront of Japan's lunar exploration efforts. Before joining ispace, he held senior positions at JAXA (Japan Aerospace Exploration Agency), where he contributed to the development of lunar mission architectures and technologies.
 
-        Dr. Yamakawa's expertise spans lunar surface operations, resource utilization, and mission planning. He has been actively involved in international discussions about lunar exploration standards, bringing a commercial perspective to these conversations. His work bridges the gap between technical capabilities and practical applications in the lunar environment.
+        Yamakawa's expertise spans lunar surface operations, resource utilization, and mission planning. He has been actively involved in international discussions about lunar exploration standards, bringing a commercial perspective to these conversations. His work bridges the gap between technical capabilities and practical applications in the lunar environment.
 
-        Dr. Yamakawa holds a Ph.D. in Aerospace Engineering from the University of Tokyo and has published extensively on topics related to lunar exploration and resource utilization. He is a member of several international space organizations and advisory committees focused on lunar activities.
+        Yamakawa holds a Ph.D. in Aerospace Engineering from the University of Tokyo and has published extensively on topics related to lunar exploration and resource utilization. He is a member of several international space organizations and advisory committees focused on lunar activities.
       `,
       image: "/images/speaker-hiroshi.jpg",
       sessions: [
@@ -136,22 +136,22 @@ const getSpeakerData = (id: string) => {
     },
     {
       id: 5,
-      name: "Dr. Elizabeth Chen",
+      name: "Elizabeth Chen",
       title: "Chair, LOGIC Initiative",
       organization: "International Space University",
-      bio: "Dr. Elizabeth Chen chairs the LOGIC Initiative and is a professor at the International Space University. With expertise in space policy and international cooperation, she leads efforts to develop standardized frameworks for lunar activities. As the workshop moderator, she facilitates productive dialogue among diverse stakeholders.",
+      bio: "Elizabeth Chen chairs the LOGIC Initiative and is a professor at the International Space University. With expertise in space policy and international cooperation, she leads efforts to develop standardized frameworks for lunar activities. As the workshop moderator, she facilitates productive dialogue among diverse stakeholders.",
       fullBio: `
-        Dr. Elizabeth Chen is a distinguished expert in space policy and international cooperation, currently serving as the Chair of the LOGIC Initiative and a professor at the International Space University. Her research focuses on governance frameworks for space activities, with a particular emphasis on lunar exploration and utilization.
+        Elizabeth Chen is a distinguished expert in space policy and international cooperation, currently serving as the Chair of the LOGIC Initiative and a professor at the International Space University. Her research focuses on governance frameworks for space activities, with a particular emphasis on lunar exploration and utilization.
 
-        As the moderator for the Lunar Standardization Workshop, Dr. Chen brings her extensive experience in facilitating international dialogue to guide discussions on standardization challenges and opportunities. Her balanced approach ensures that diverse perspectives are heard and considered in the development of recommendations.
+        As the moderator for the Lunar Standardization Workshop, Chen brings her extensive experience in facilitating international dialogue to guide discussions on standardization challenges and opportunities. Her balanced approach ensures that diverse perspectives are heard and considered in the development of recommendations.
 
-        Dr. Chen has published extensively on topics related to space governance, international cooperation, and standardization. Her work has been influential in shaping policy discussions at various international forums, including the United Nations Committee on the Peaceful Uses of Outer Space.
+        Chen has published extensively on topics related to space governance, international cooperation, and standardization. Her work has been influential in shaping policy discussions at various international forums, including the United Nations Committee on the Peaceful Uses of Outer Space.
 
-        Prior to her academic career, Dr. Chen worked in the space industry and held advisory positions with several space agencies. This practical experience informs her understanding of the technical and operational challenges involved in lunar standardization efforts.
+        Prior to her academic career, Chen worked in the space industry and held advisory positions with several space agencies. This practical experience informs her understanding of the technical and operational challenges involved in lunar standardization efforts.
 
-        Dr. Chen holds a Ph.D. in International Relations from Princeton University and has received numerous awards for her contributions to space policy and education. She is a sought-after speaker at international conferences and has served on various advisory boards related to space exploration and governance.
+        Chen holds a Ph.D. in International Relations from Princeton University and has received numerous awards for her contributions to space policy and education. She is a sought-after speaker at international conferences and has served on various advisory boards related to space exploration and governance.
       `,
-      image: "/images/organizer-1.jpg",
+      image: "/images/speaker-chen.jpg",
       sessions: [
         {
           title: "Panel Discussion: Standardization Challenges and Opportunities in Lunar Exploration (Moderator)",
@@ -175,7 +175,7 @@ const getSpeakerData = (id: string) => {
         website: "https://isunet.edu/faculty/chen",
         email: "elizabeth.chen@isunet.edu",
       },
-      isModerator: true,
+      isModerator: false,
     },
   ]
 

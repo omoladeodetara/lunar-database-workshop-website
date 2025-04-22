@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Linkedin, Mail } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Mail, Globe } from "lucide-react"
 
 export function Footer() {
   return (
@@ -35,6 +35,16 @@ export function Footer() {
               <Button variant="ghost" size="icon" asChild>
                 <Link href="mailto:info@lunarworkshop.org" aria-label="Email">
                   <Mail className="h-5 w-5" />
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <Link
+                  href="https://moonvillageassociation.org/gegsla/gegsla-team/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GEGSLA Team"
+                >
+                  <Globe className="h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -82,9 +92,37 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-border/40 text-center">
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm mb-2">
             © {new Date().getFullYear()} LOGIC/LSIC/GEGSLA Virtual Workshop. All rights reserved.
           </p>
+          <div className="flex justify-center gap-4 text-sm text-muted-foreground">
+            <Link
+              href="https://logic.jhuapl.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary hover:underline"
+            >
+              LOGIC
+            </Link>
+            <span>|</span>
+            <Link
+              href="https://lsic.jhuapl.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary hover:underline"
+            >
+              LSIC
+            </Link>
+            <span>|</span>
+            <Link
+              href="https://moonvillageassociation.org/gegsla/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary hover:underline"
+            >
+              GEGSLA
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

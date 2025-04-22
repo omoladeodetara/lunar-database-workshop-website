@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Linkedin, Twitter, Globe, Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
+// We'll use console logging for performance tracking in development
 
 export default function SpeakersPage() {
   // Speaker data
@@ -74,7 +75,7 @@ export default function SpeakersPage() {
     },
     {
       id: 4,
-      name: "Dr. Hiroshi Yamakawa",
+      name: "Hiroshi Yamakawa",
       title: "Chief Technology Officer",
       organization: "ispace, Inc.",
       bio: "Dr. Hiroshi Yamakawa serves as the CTO of ispace, a leading lunar exploration company. With a background in aerospace engineering and lunar mission planning, he oversees the technical development of ispace's lunar landers and rovers. His expertise in lunar surface operations and resource utilization contributes significantly to international standards for lunar activities.",
@@ -95,13 +96,13 @@ export default function SpeakersPage() {
       organization: "International Space University",
       bio: "Dr. Elizabeth Chen chairs the LOGIC Initiative and is a professor at the International Space University. With expertise in space policy and international cooperation, she leads efforts to develop standardized frameworks for lunar activities. As the workshop moderator, she facilitates productive dialogue among diverse stakeholders.",
       expertise: ["space policy", "international cooperation", "lunar governance", "standardization frameworks"],
-      image: "/images/organizer-1.jpg",
+      image: "/images/speaker-chen.jpg", // Updated from "/images/organizer-1.jpg"
       social: {
         twitter: "https://twitter.com/elizabethchen",
         linkedin: "https://linkedin.com/in/elizabeth-chen",
         website: "https://isunet.edu/faculty/chen",
       },
-      isModerator: true,
+      isModerator: false,
       workshop: "May 13, 2025",
       session: "Panel Discussion (Moderator)",
     },
@@ -113,6 +114,8 @@ export default function SpeakersPage() {
 
   // Filter speakers based on search query
   useEffect(() => {
+    const startTime = performance.now()
+
     if (!searchQuery.trim()) {
       setFilteredSpeakers(allSpeakers)
       return
@@ -133,6 +136,12 @@ export default function SpeakersPage() {
     })
 
     setFilteredSpeakers(filtered)
+
+    // Log performance data to console in development
+    const duration = performance.now() - startTime
+    if (process.env.NODE_ENV === "development") {
+      console.log(`[Performance] Search (${searchQuery}): ${duration}ms, ${filtered.length} results`)
+    }
   }, [searchQuery])
 
   // Get the moderator
@@ -179,7 +188,7 @@ export default function SpeakersPage() {
                       <Link href={`/speakers/${speaker.id}`} className="flex items-center px-4 py-2 hover:bg-muted">
                         <div className="relative w-8 h-8 rounded-full overflow-hidden mr-3">
                           <Image
-                            src={speaker.image || "/placeholder.svg"}
+                            src={speaker.image || "/placeholder.png"}
                             alt={speaker.name}
                             fill
                             className="object-cover"
@@ -252,7 +261,7 @@ export default function SpeakersPage() {
             {filteredSpeakers.map((speaker) => (
               <Card key={speaker.id} className="overflow-hidden">
                 <div className="relative h-64">
-                  <Image src={speaker.image || "/placeholder.svg"} alt={speaker.name} fill className="object-cover" />
+                  <Image src={speaker.image || "/placeholder.png"} alt={speaker.name} fill className="object-cover" />
                   {speaker.isModerator && (
                     <div className="absolute top-2 right-2">
                       <Badge className="bg-primary">Moderator</Badge>

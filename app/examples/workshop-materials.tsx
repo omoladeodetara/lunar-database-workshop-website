@@ -10,7 +10,7 @@ export default function WorkshopMaterialsExample() {
         <Card>
           <div className="relative h-48">
             <Image
-              src="/images/workshop-materials.jpg"
+              src="/images/lunar-surface.jpg"
               alt="Workshop Materials"
               fill
               className="object-cover rounded-t-lg"
@@ -22,19 +22,28 @@ export default function WorkshopMaterialsExample() {
           </CardContent>
         </Card>
 
-        {/* Add your new image here */}
+        <Card>
+          <div className="relative h-48">
+            <Image src="/images/lunar-mission.jpg" alt="Workshop Slides" fill className="object-cover rounded-t-lg" />
+          </div>
+          <CardContent className="p-4">
+            <h3 className="font-bold mb-2">Workshop Slides</h3>
+            <p className="text-muted-foreground">Presentation slides for the May 2025 workshop.</p>
+          </CardContent>
+        </Card>
+
         <Card>
           <div className="relative h-48">
             <Image
-              src="/images/your-new-image.jpg"
-              alt="New Workshop Image"
+              src="/images/lunar-outpost-construction.png"
+              alt="Technical Documentation"
               fill
               className="object-cover rounded-t-lg"
             />
           </div>
           <CardContent className="p-4">
-            <h3 className="font-bold mb-2">Workshop Slides</h3>
-            <p className="text-muted-foreground">Presentation slides for the May 2025 workshop.</p>
+            <h3 className="font-bold mb-2">Technical Documentation</h3>
+            <p className="text-muted-foreground">Detailed technical specifications and guidelines.</p>
           </CardContent>
         </Card>
       </div>
