@@ -253,16 +253,7 @@ export default function AboutPage() {
           ].map((organizer) => (
             <Card key={organizer.id} className="overflow-hidden">
               <div className="relative h-64">
-                <Image
-                  src={organizer.image || "/placeholder.svg"}
-                  alt={organizer.name}
-                  fill
-                  className="object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.src = "/placeholder.svg"
-                  }}
-                />
+                <Image src={organizer.image || "/placeholder.svg"} alt={organizer.name} fill className="object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-1">{organizer.name}</h3>

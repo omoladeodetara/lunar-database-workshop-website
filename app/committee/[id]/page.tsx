@@ -166,7 +166,7 @@ const getCommitteeMemberData = (id: string) => {
       id: 7,
       name: "Ekaterina Seltikova",
       title: "International Cooperation Coordinator",
-      organization: "GEGSLA",
+      organization: "Advanced Space Concepts and Technologies",
       bio: "Ekaterina Seltikova is a policy advisor with the Global Expert Group on Sustainable Lunar Activities (GEGSLA), specializing in international space policy and diplomatic relations.",
       fullBio: `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
