@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { MessageSquare, Send, ThumbsUp } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { toast } from "@/hooks/use-toast"
+import { trackEvent } from "@/lib/analytics"
 
 export default function EngagementPage() {
   const [question, setQuestion] = useState("")
@@ -43,6 +44,15 @@ export default function EngagementPage() {
     },
   ])
 
+  // Track page view
+  useEffect(() => {
+    trackEvent("engagement_interaction", {
+      page: "engagement",
+      action: "page_view",
+      source: document.referrer || "direct",
+    })
+  }, [])
+
   const handleSubmitQuestion = (e: React.FormEvent) => {
     e.preventDefault()
     if (question.trim()) {
@@ -55,6 +65,14 @@ export default function EngagementPage() {
         responses: 0,
         time: "Just now",
       }
+
+      // Track question submission
+      trackEvent("engagement_interaction", {
+        action: "question_submitted",
+        question_length: question.length,
+        question_topic: detectQuestionTopic(question),
+      })
+
       setQuestions([newQuestion, ...questions])
       setQuestion("")
       toast({
@@ -65,7 +83,25 @@ export default function EngagementPage() {
   }
 
   const handleLike = (id: number) => {
+    // Track like action
+    const likedQuestion = questions.find((q) => q.id === id)
+    trackEvent("engagement_interaction", {
+      action: "question_liked",
+      question_id: id,
+      question_user: likedQuestion?.user || "unknown",
+    })
+
     setQuestions(questions.map((q) => (q.id === id ? { ...q, likes: q.likes + 1 } : q)))
+  }
+
+  // Simple function to detect question topic based on keywords
+  const detectQuestionTopic = (questionText: string) => {
+    const text = questionText.toLowerCase()
+    if (text.includes("database") || text.includes("data")) return "database"
+    if (text.includes("interoperability") || text.includes("systems")) return "interoperability"
+    if (text.includes("cooperation") || text.includes("international")) return "cooperation"
+    if (text.includes("standard") || text.includes("protocol")) return "standards"
+    return "other"
   }
 
   return (
@@ -77,7 +113,16 @@ export default function EngagementPage() {
         </p>
       </div>
 
-      <Tabs defaultValue="qa" className="w-full max-w-4xl mx-auto">
+      <Tabs
+        defaultValue="qa"
+        className="w-full max-w-4xl mx-auto"
+        onValueChange={(value) => {
+          trackEvent("engagement_interaction", {
+            action: "tab_changed",
+            tab: value,
+          })
+        }}
+      >
         <TabsList className="grid grid-cols-1 mb-8">
           <TabsTrigger value="qa">
             <MessageSquare className="h-4 w-4 mr-2" />
@@ -99,7 +144,16 @@ export default function EngagementPage() {
                 <Textarea
                   placeholder="Type your question here..."
                   value={question}
-                  onChange={(e) => setQuestion(e.target.value)}
+                  onChange={(e) => {
+                    setQuestion(e.target.value)
+                    // Track when user types a substantial question (more than 50 chars)
+                    if (e.target.value.length === 50) {
+                      trackEvent("engagement_interaction", {
+                        action: "question_drafting",
+                        length_milestone: "50_chars",
+                      })
+                    }
+                  }}
                   className="min-h-[100px]"
                 />
                 <Button type="submit" className="w-full">

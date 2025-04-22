@@ -13,6 +13,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "@/hooks/use-toast"
 import { CheckCircle2 } from "lucide-react"
+import { trackEvent } from "@/lib/analytics"
+import { useEffect } from "react"
 
 const sessionPreferences = [
   {
@@ -74,6 +76,14 @@ const formSchema = z.object({
 export default function RegistrationPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  // Track page view when component mounts
+  useEffect(() => {
+    trackEvent("registration_started", {
+      page: "registration",
+      source: document.referrer || "direct",
+    })
+  }, [])
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -88,9 +98,29 @@ export default function RegistrationPage() {
     },
   })
 
+  // Track when users select session preferences
+  const watchSessionPreferences = form.watch("sessionPreferences")
+  useEffect(() => {
+    if (watchSessionPreferences && watchSessionPreferences.length > 0) {
+      trackEvent("session_selected", {
+        count: watchSessionPreferences.length,
+        sessions: watchSessionPreferences.join(","),
+      })
+    }
+  }, [watchSessionPreferences])
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     // In a real application, you would submit this data to your backend
     console.log(values)
+
+    // Track successful registration
+    trackEvent("registration_completed", {
+      organization_type:
+        values.organization.includes("university") || values.organization.includes("college") ? "academic" : "industry",
+      interest: values.interest,
+      session_count: values.sessionPreferences?.length || 0,
+      has_special_requirements: values.specialRequirements ? "yes" : "no",
+    })
 
     // Show success message
     setIsSubmitted(true)
@@ -116,7 +146,10 @@ export default function RegistrationPage() {
             Thank you for registering for the LOGIC/LSIC/GEGSLA Virtual Workshop. We have sent a confirmation email to
             your registered email address with further details.
           </p>
-          <Button asChild>
+          <Button
+            asChild
+            onClick={() => trackEvent("navigation", { destination: "home", from: "registration_success" })}
+          >
             <a href="/">Return to Home</a>
           </Button>
         </div>
@@ -217,7 +250,13 @@ export default function RegistrationPage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Primary Interest</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select
+                      onValueChange={(value) => {
+                        field.onChange(value)
+                        trackEvent("interest_selected", { interest: value })
+                      }}
+                      defaultValue={field.value}
+                    >
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select your primary interest" />
@@ -261,9 +300,11 @@ export default function RegistrationPage() {
                                   <Checkbox
                                     checked={field.value?.includes(session.id)}
                                     onCheckedChange={(checked) => {
-                                      return checked
-                                        ? field.onChange([...(field.value || []), session.id])
-                                        : field.onChange(field.value?.filter((value) => value !== session.id))
+                                      const newValue = checked
+                                        ? [...(field.value || []), session.id]
+                                        : field.value?.filter((value) => value !== session.id)
+
+                                      field.onChange(newValue)
                                     }}
                                   />
                                 </FormControl>
@@ -312,11 +353,23 @@ export default function RegistrationPage() {
                       <FormLabel>I agree to the terms and conditions</FormLabel>
                       <FormDescription>
                         By checking this box, you agree to our{" "}
-                        <Link href="/terms" className="text-primary underline">
+                        <Link
+                          href="/terms"
+                          className="text-primary underline"
+                          onClick={() =>
+                            trackEvent("external_link_clicked", { destination: "terms", from: "registration" })
+                          }
+                        >
                           Terms of Service
                         </Link>{" "}
                         and{" "}
-                        <Link href="/privacy" className="text-primary underline">
+                        <Link
+                          href="/privacy"
+                          className="text-primary underline"
+                          onClick={() =>
+                            trackEvent("external_link_clicked", { destination: "privacy", from: "registration" })
+                          }
+                        >
                           Privacy Policy
                         </Link>
                         .

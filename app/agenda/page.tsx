@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -18,8 +20,35 @@ import {
 } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useEffect } from "react"
+import { trackEvent } from "@/lib/analytics"
 
 export default function DetailedAgendaPage() {
+  // Track page view
+  useEffect(() => {
+    trackEvent("agenda_viewed", {
+      page: "agenda",
+      source: document.referrer || "direct",
+    })
+  }, [])
+
+  // Track calendar download
+  const handleCalendarDownload = () => {
+    trackEvent("workshop_material_downloaded", {
+      material_type: "calendar",
+      format: "ics",
+    })
+  }
+
+  // Track speaker profile clicks from agenda
+  const handleSpeakerClick = (speakerId: number, speakerName: string) => {
+    trackEvent("navigation", {
+      destination: `speaker_${speakerId}`,
+      from: "agenda",
+      speaker_name: speakerName,
+    })
+  }
+
   // Session types with icons
   const sessionTypes = {
     introduction: { name: "Introduction", icon: <Video className="h-4 w-4" /> },
@@ -218,7 +247,7 @@ export default function DetailedAgendaPage() {
           </div>
         </div>
         <div className="flex justify-center">
-          <Button asChild>
+          <Button asChild onClick={handleCalendarDownload}>
             <a href="#" download="Lunar-Standardization-Workshop-Agenda.ics">
               <Download className="mr-2 h-4 w-4" /> Add to Calendar
             </a>
@@ -330,6 +359,7 @@ export default function DetailedAgendaPage() {
                                   <Link
                                     href={`/speakers/${speaker.id}`}
                                     className="flex items-center gap-2 p-2 rounded-md hover:bg-muted transition-colors"
+                                    onClick={() => handleSpeakerClick(speaker.id, speaker.name)}
                                   >
                                     <Avatar className="h-8 w-8">
                                       <AvatarImage src={speaker.image || "/placeholder.svg"} alt={speaker.name} />
@@ -459,7 +489,13 @@ export default function DetailedAgendaPage() {
           Space is limited to ensure productive breakout sessions. Please register early to secure your place in this
           collaborative workshop.
         </p>
-        <Button size="lg" asChild>
+        <Button
+          size="lg"
+          asChild
+          onClick={() =>
+            trackEvent("navigation", { destination: "registration", from: "agenda", action: "register_cta" })
+          }
+        >
           <Link href="/registration">Register for the Workshop</Link>
         </Button>
       </div>

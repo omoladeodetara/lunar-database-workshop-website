@@ -1,9 +1,13 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Linkedin, Twitter, Globe, Mail, Calendar } from "lucide-react"
+import { useEffect } from "react"
+import { trackEvent } from "@/lib/analytics"
 
 // This would typically come from a database or API
 const getSpeakerData = (id: string) => {
@@ -181,15 +185,41 @@ const getSpeakerData = (id: string) => {
 export default function SpeakerDetailPage({ params }: { params: { id: string } }) {
   const speaker = getSpeakerData(params.id)
 
+  // Track speaker profile view
+  useEffect(() => {
+    trackEvent("speaker_profile_viewed", {
+      speaker_id: params.id,
+      speaker_name: speaker.name,
+      speaker_organization: speaker.organization,
+      is_moderator: speaker.isModerator ? "yes" : "no",
+    })
+  }, [params.id, speaker])
+
+  // Track external link clicks
+  const handleExternalLinkClick = (linkType: string, url: string) => {
+    trackEvent("external_link_clicked", {
+      link_type: linkType,
+      speaker_id: params.id,
+      speaker_name: speaker.name,
+      url: url,
+    })
+  }
+
   return (
     <div className="container mx-auto px-4 py-12">
-      <Button variant="ghost" asChild className="mb-8">
+      <Button
+        variant="ghost"
+        asChild
+        className="mb-8"
+        onClick={() => trackEvent("navigation", { destination: "speakers_list", from: `speaker_${params.id}` })}
+      >
         <Link href="/speakers">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Speakers
         </Link>
       </Button>
 
+      {/* Rest of the component remains the same, but with added tracking */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1">
           <div className="sticky top-24">
@@ -208,7 +238,12 @@ export default function SpeakerDetailPage({ params }: { params: { id: string } }
 
             <div className="flex flex-wrap gap-3 mb-8">
               {speaker.social.twitter && (
-                <Button variant="outline" size="sm" asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  onClick={() => handleExternalLinkClick("twitter", speaker.social.twitter)}
+                >
                   <Link href={speaker.social.twitter} target="_blank" rel="noopener noreferrer">
                     <Twitter className="mr-2 h-4 w-4" />
                     Twitter
@@ -216,7 +251,12 @@ export default function SpeakerDetailPage({ params }: { params: { id: string } }
                 </Button>
               )}
               {speaker.social.linkedin && (
-                <Button variant="outline" size="sm" asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  onClick={() => handleExternalLinkClick("linkedin", speaker.social.linkedin)}
+                >
                   <Link href={speaker.social.linkedin} target="_blank" rel="noopener noreferrer">
                     <Linkedin className="mr-2 h-4 w-4" />
                     LinkedIn
@@ -224,7 +264,12 @@ export default function SpeakerDetailPage({ params }: { params: { id: string } }
                 </Button>
               )}
               {speaker.social.website && (
-                <Button variant="outline" size="sm" asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  onClick={() => handleExternalLinkClick("website", speaker.social.website)}
+                >
                   <Link href={speaker.social.website} target="_blank" rel="noopener noreferrer">
                     <Globe className="mr-2 h-4 w-4" />
                     Website
@@ -232,7 +277,12 @@ export default function SpeakerDetailPage({ params }: { params: { id: string } }
                 </Button>
               )}
               {speaker.social.email && (
-                <Button variant="outline" size="sm" asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  onClick={() => handleExternalLinkClick("email", `mailto:${speaker.social.email}`)}
+                >
                   <Link href={`mailto:${speaker.social.email}`}>
                     <Mail className="mr-2 h-4 w-4" />
                     Email
