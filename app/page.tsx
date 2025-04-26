@@ -10,18 +10,12 @@ export default function Home() {
       <Starfield />
 
       {/* Centered text with typing animation */}
-      <div className="z-10 text-center flex flex-col items-center">
-        <TypingAnimation
-          text="paused."
-          className="font-mono text-4xl md:text-6xl text-[#22c55e] mb-4"
-          typingSpeed={150}
-        />
+      <div className="z-10 text-center">
         <TypingAnimation
           text="lost in space"
-          className="font-mono text-2xl md:text-4xl text-[#22c55e]"
+          className="font-mono text-4xl md:text-6xl text-[#22c55e]"
           typingSpeed={150}
-          startDelay={2000}
-          showCursor={false}
+          showCursor={true}
         />
       </div>
     </main>
